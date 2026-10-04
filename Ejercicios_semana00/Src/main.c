@@ -18,16 +18,23 @@
 
 #include <stdint.h>
 
-int ejercicio_01(void)
+int ejercicio_01(void) //Ejercicio 01
 {
     uint8_t my_variable = 42; //Definición de variable de 8 bits
 
 }
 
+int ejercicio_02(void) //Ejercicio 02
+{
+    uint8_t dec = 65;
+    uint8_t hex = 0x41; 
+    uint8_t bin = 0b01000001;
+
+}
 int main(void)
 {
     // Llamada a la función ejercicio_01
-    ejercicio_01();
+    ejercicio_02();
 
     // Bucle infinito
     while (1)
