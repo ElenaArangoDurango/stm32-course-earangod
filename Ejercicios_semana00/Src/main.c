@@ -49,10 +49,19 @@ void ejercicio_04 (void) //Ejercicio 04
 
 }
 
+void ejercicio_05 (void) //Ejercicio 05
+{
+    int8_t x = 127; //0b01111111 predicción:-128
+    x = x + 1; //128
+
+    uint8_t y = 255;
+    y = y + 1; // predicción: 0
+}
+
 int main(void)
 {
     // Llamada a la función ejercicio_01
-    ejercicio_04();
+    ejercicio_05();
 
     // Bucle infinito
     while (1)
