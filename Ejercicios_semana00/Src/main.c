@@ -82,11 +82,26 @@ void ejercicio_07 (void) //Ejercicio 07
     x = 0x80; // 10000000
 }
 
+void ejercicio_08 (void) //Ejercicio 08
+
+{
+    uint8_t a = 5;
+    uint8_t b = 0;
+    uint8_t c = 255;
+
+    uint8_t r1 = !a; // a = 5, entonces es verdadero, por lo que !a será falso (0)
+    uint8_t r2 = !b; // b = 0, entonces es falso, por lo que !b será verdadero (1)
+    uint8_t r3 = !c; // c = 255, entonces es verdadero, por lo que !c será falso (0)
+    uint8_t r4 = ~c; // c = 255, entonces es 11111111, por lo que ~c será 00000000 (0)
+
+    uint8_t r5 = ~a; // a = 5, entonces es 00000101, por lo que ~a será 11111010 (250)
+}
+
 
 int main(void)
 {
     // Llamada a la función ejercicio_01
-    ejercicio_07();
+    ejercicio_08();
 
     // Bucle infinito
     while (1)
