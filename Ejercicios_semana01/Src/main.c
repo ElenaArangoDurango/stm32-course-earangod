@@ -32,9 +32,17 @@ void ejercicio_1_1 (void)
 
 }
 
+void ejercicio_1_2(void)
+{
+    // PREDICCIÓN: sum = 44
+    uint8_t x   = 200;
+    uint8_t y   = 100;
+    uint8_t sum = x + y;
+}  
+
 int main(void)
 {
-    ejercicio_1_1();
+    ejercicio_1_2();
 
     while(1)
    {}
