@@ -18,23 +18,35 @@
 
 #include <stdint.h>
 
-int ejercicio_01(void) //Ejercicio 01
+void ejercicio_01(void) //Ejercicio 01
 {
     uint8_t my_variable = 42; //Definición de variable de 8 bits
 
 }
 
-int ejercicio_02(void) //Ejercicio 02
+void ejercicio_02(void) //Ejercicio 02
 {
     uint8_t dec = 65;
     uint8_t hex = 0x41; 
     uint8_t bin = 0b01000001;
 
 }
+
+void ejercicio_03 (void) //Ejercicio 03
+{ 
+    uint8_t a = 255;
+    uint16_t b = 255;
+    uint32_t c = 255;
+    uint8_t d = 256; //No se puede almacenar en un uint8_t, ya que excede su rango máximo de 0 a 255
+    uint8_t e = 257; //No se puede almacenar en un uint8_t, ya que excede su rango máximo de 0 a 255
+}
+
+
+
 int main(void)
 {
     // Llamada a la función ejercicio_01
-    ejercicio_02();
+    ejercicio_03();
 
     // Bucle infinito
     while (1)
