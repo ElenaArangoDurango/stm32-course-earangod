@@ -37,16 +37,22 @@ void ejercicio_03 (void) //Ejercicio 03
     uint8_t a = 255;
     uint16_t b = 255;
     uint32_t c = 255;
-    uint8_t d = 256; //No se puede almacenar en un uint8_t, ya que excede su rango máximo de 0 a 255
-    uint8_t e = 257; //No se puede almacenar en un uint8_t, ya que excede su rango máximo de 0 a 255
+    uint8_t d = 256; // El resultado será : 0, No se puede almacenar en un uint8_t, ya que excede su rango máximo de 0 a 255
+    uint8_t e = 257; //El resultado será : 1, No se puede almacenar en un uint8_t, ya que excede su rango máximo de 0 a 255
 }
 
+void ejercicio_04 (void) //Ejercicio 04
+{
+    uint8_t a = 200;
+    uint8_t b = 200;
+    uint8_t c = -1; // como tengo uint (unsigned) el resultado será 255, ya que el valor -1 se interpreta como 11111111 uint8_t (255) debido a la representación en complemento a dos.
 
+}
 
 int main(void)
 {
     // Llamada a la función ejercicio_01
-    ejercicio_03();
+    ejercicio_04();
 
     // Bucle infinito
     while (1)
