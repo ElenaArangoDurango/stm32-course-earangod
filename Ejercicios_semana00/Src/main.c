@@ -68,11 +68,25 @@ void ejercicio_06 (void) //Ejercicio 06
     result = 0xA0 + 0x60;
 }
 
+void ejercicio_07 (void) //Ejercicio 07
+{
+    uint8_t x = 0;
+
+    x = 0x01; // 00000001
+    x = 0x02; // 00000010
+    x = 0x04; // 00000100
+    x = 0x08; // 00001000
+    x = 0x10; // 00010000
+    x = 0x20; // 00100000
+    x = 0x40; // 01000000
+    x = 0x80; // 10000000
+}
+
 
 int main(void)
 {
     // Llamada a la función ejercicio_01
-    ejercicio_06();
+    ejercicio_07();
 
     // Bucle infinito
     while (1)
