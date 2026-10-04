@@ -55,11 +55,51 @@ void ejercicio_1_3(void)
 
 }
 
+void ejercicio_1_4(void)
+{
+    uint8_t x      = 4;   // distinto de cero (verdadero para C)
+    uint8_t y      = 0;   // cero (falso para C)
+    uint8_t z      = 9;
+    uint8_t result = 0;   // empieza en 0 para ver cuándo cambia
+
+    // Bloque 1: un valor distinto de cero como condición directa
+    // PREDICCIÓN: result = 10
+    if (x)
+    {
+        result = 10;      // solo se ejecuta si x != 0
+    }
+    // breakpoint aquí
+
+    // Bloque 2: un valor cero como condición directa, con else
+    // PREDICCIÓN: result = 30
+    if (y)
+    {
+        result = 20;      // se ejecuta solo si y != 0
+    }
+    else
+    {
+        result = 30;      // se ejecuta si y == 0
+    }
+    // breakpoint aquí
+
+    // Bloque 3: comparación de igualdad
+    // PREDICCIÓN: result = 50
+    if (x == y)
+    {
+        result = 40;      // se ejecuta si x e y son iguales
+    }
+    else
+    {
+        result = 50;      // se ejecuta si son distintos
+    }
+    // breakpoint aquí
+}
+
 int main(void)
 {
-    ejercicio_1_3();
+    ejercicio_1_4();
 
-    while(1)
-   {}
-
+    while (1)
+    {
+    }
 }
