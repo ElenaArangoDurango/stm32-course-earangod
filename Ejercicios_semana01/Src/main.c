@@ -92,12 +92,57 @@ void ejercicio_1_4(void)
     {
         result = 50;      // se ejecuta si son distintos
     }
-    // breakpoint aquí
+    
+}
+
+void ejercicio_1_5(void)
+{
+    uint8_t x;        // controla el bucle (lo cambia el for)
+    uint8_t counter;  // cuenta las vueltas (lo cambia counter++)
+
+    // Versión original: contar de 0 a 9
+    // x toma: 0, 1, 2, ..., 9 y termina cuando x vale 10
+    // PREDICCIÓN: counter = 9
+    counter = 0;
+    for (x = 0; x <= 9; x = x + 1)
+    {
+        counter++;
+    }
+  
+
+    // Modificación 1: pasos de 2
+    // x toma: 0, 2, 4, 6, 8 y termina cuando x vale 10
+    // PREDICCIÓN: counter = 10
+    counter = 0;
+    for (x = 0; x <= 9; x = x + 2)
+    {
+        counter++;
+    }
+    
+
+    // Modificación 2: hacia atrás, de 10 a 1
+    // x toma: 10, 9, 8, ..., 1 y termina cuando x vale 0
+    // PREDICCIÓN: counter = 10
+    counter = 0;
+    for (x = 10; x >= 1; x = x - 1)
+    {
+        counter++;
+    }
+    
+    // Modificación 3: detenerse en otro valor
+    // x toma: 0, 1, 2, 3, 4 y termina cuando x vale 5
+    // PREDICCIÓN: counter = 5
+    counter = 0;
+    for (x = 0; x < 5; x = x + 1)
+    {
+        counter++;
+    }
+    
 }
 
 int main(void)
 {
-    ejercicio_1_4();
+    ejercicio_1_5();
 
     while (1)
     {
