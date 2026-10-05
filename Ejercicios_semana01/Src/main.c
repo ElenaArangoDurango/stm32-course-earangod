@@ -184,9 +184,75 @@ void ejercicio_1_7(void)
     // cuerpo se ejecuta al menos una vez.
 }
 
+//el fall through basicamente describe lo que pasa cuando el 
+// programa ejecuta el case con el que coincidió y continua ejecutando los de
+//  abajo, hasta encontrar un break o llegar al final
+// Parte 1: switch con todos los break
+void ejercicio_1_8a(void)
+{
+    uint8_t input  = 3;    // cambia este valor en cada prueba
+    uint8_t output = 0;
+
+    // PREDICCIONES de output:
+    // input = 3  -> 10
+    // input = 7  -> 20
+    // input = 9  -> 30
+    // input = 12 -> 40
+    // input = 5  -> 0  (no coincide con ningún case, entra al default)
+    switch (input)
+    {
+        case 3:
+            output = 10;
+            break;
+        case 7:
+            output = 20;
+            break;
+        case 9:
+            output = 30;
+            break;
+        case 12:
+            output = 40;
+            break;
+        default:
+            output = 0;
+            break;
+    }
+}   
+
+// Parte 2: el mismo switch, sin el break del case 9 (fall-through)
+void ejercicio_1_8b(void)
+{
+    uint8_t input  = 9;
+    uint8_t output = 0;
+
+    // PREDICCIONES de output sin el break del case 9:
+    // input = 9  -> 40  (ejecuta output = 30, cae al case 12 y ejecuta output = 40)
+    // input = 7  -> 20  (el case 7 tiene break, no se ve afectado)
+    // input = 12 -> 40
+    switch (input)
+    {
+        case 3:
+            output = 10;
+            break;
+        case 7:
+            output = 20;
+            break;
+        case 9:
+            output = 30;
+            // sin break a propósito: cae al case siguiente
+        case 12:
+            output = 40;
+            break;
+        default:
+            output = 0;
+            break;
+    }
+}  
+
 int main(void)
 {
-    ejercicio_1_7();
+    ejercicio_1_8a();
+    ejercicio_1_8b();
 
     while (1)
     {
