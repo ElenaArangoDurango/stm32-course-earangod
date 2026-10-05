@@ -144,7 +144,7 @@ void ejercicio_1_6(void)
 {
    
 
-        // PREDICCIÓN 1: counter = 55 PREDICCIÓN 2:
+        // PREDICCIÓN 1: sum = 55 PREDICCIÓN 2: sum = 5050
         uint8_t counter = 0;
         uint16_t sum = 0;
         while (counter < 100)
@@ -153,12 +153,40 @@ void ejercicio_1_6(void)
             sum = sum + counter;
         }
     
+
 }
 
 
+void ejercicio_1_7(void)
+{
+    uint8_t x = 2;   // distinto de 0, así que la condición (x == 0) es FALSA
+
+    // Pieza 1: while
+    // PREDICCIÓN: resultado_while = 0, porque la condición es falsa
+    // desde el inicio y el cuerpo nunca se ejecuta
+    uint8_t resultado_while = 0;
+    while (x == 0)
+    {
+        resultado_while = 42;
+    }
+
+    // Pieza 2: do-while, con LA MISMA condición
+    // PREDICCIÓN: resultado_do = 42, porque el cuerpo se ejecuta una vez
+    // antes de evaluar la condición
+    uint8_t resultado_do = 0;
+    do
+    {
+        resultado_do = 42;
+    } while (x == 0);   // este bloque termina con ;
+
+    // Diferencia: el while evalúa la condición ANTES de ejecutar el cuerpo,
+    // y puede no ejecutarlo nunca. El do-while evalúa DESPUÉS, así que su
+    // cuerpo se ejecuta al menos una vez.
+}
+
 int main(void)
 {
-    ejercicio_1_6();
+    ejercicio_1_7();
 
     while (1)
     {
