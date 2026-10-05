@@ -140,9 +140,25 @@ void ejercicio_1_5(void)
     
 }
 
+void ejercicio_1_6(void)
+{
+   
+
+        // PREDICCIÓN 1: counter = 55 PREDICCIÓN 2:
+        uint8_t counter = 0;
+        uint16_t sum = 0;
+        while (counter < 100)
+        {
+            counter++;
+            sum = sum + counter;
+        }
+    
+}
+
+
 int main(void)
 {
-    ejercicio_1_5();
+    ejercicio_1_6();
 
     while (1)
     {
