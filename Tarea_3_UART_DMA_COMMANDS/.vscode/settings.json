@@ -1,0 +1,19 @@
+{
+    "cmake.cmakePath": "cube-cmake",
+    "cmake.configureArgs": [ // está en configureArgs porque se configura como un preset 
+        "-DCMAKE_COMMAND=cube-cmake", // Usa el CMake de la extensión de ST
+        "-DAPP=pingpong" // Elige la aplicación después de cambiarla 
+        // -D asigna un valor a una variable de Caché
+    ],
+    "cmake.preferredGenerators": [
+        "Ninja"
+    ],
+    "stm32cube-ide-clangd.path": "cube",
+    "stm32cube-ide-clangd.arguments": [
+        "starm-clangd",
+        "--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-gcc*",
+        "--query-driver=${env:CUBE_BUNDLE_PATH}/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-g++*"
+    ],
+    
+    "C_Cpp.intelliSenseEngine": "disabled"
+}
