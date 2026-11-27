@@ -1,46 +1,45 @@
-/* Autor: earangod@unal.edu.co
-Este archivo decide qué responde cada comando. Recibe el comando ya analizado
-por cmd_parser y escribe la respuesta en un texto, sin tocar la UART.
-Quien lo llama (app.c) es el que envía esa respuesta por el puerto serie. */
+/* Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
+Aquí se decide qué hace cada comando. Le llega el comando ya partido por cmd_parser y escribe
+la respuesta en reply. No usa la UART, el que manda la respuesta es app.c. */
 #include <stdio.h>	// snprintf, para armar las respuestas
 #include <stdlib.h>	// strtol, para convertir texto a número
 #include "stm32f4xx_hal.h"	// HAL_GetTick, el tiempo desde el arranque
-#include "commands.h"	// la interfaz de este archivo y cmd_t
+#include "commands.h"	// trae cmd_t
 #include "heartbeat.h"	// leer y cambiar el periodo del LED
-#include "pwm.h"	// cambiar el ciclo de trabajo de la salida PWM
+#include "pwm.h"	// pwm_set_duty y pwm_get_duty
 
-static void cmd_blink(const cmd_t *cmd, char *reply, size_t size);	// responde el comando blink
-static void cmd_echo(const cmd_t *cmd, char *reply, size_t size);	// responde el comando echo
-static void cmd_pwm(const cmd_t *cmd, char *reply, size_t size);	// responde el comando pwm
+// los comandos largos tienen su propia función
+static void cmd_blink(const cmd_t *cmd, char *reply, size_t size);
+static void cmd_echo(const cmd_t *cmd, char *reply, size_t size);
+static void cmd_pwm(const cmd_t *cmd, char *reply, size_t size);
 
-// Ejecuta un comando ya analizado y deja la respuesta en reply, en una sola línea.
-// size es el espacio que tiene reply, así snprintf no se pasa.
+// Ejecuta el comando y deja la respuesta en reply. size es el tamaño de reply, para que snprintf no se pase
 void commands_execute(const cmd_t *cmd, char *reply, size_t size)
 {
-    if (cmd->too_many_args) {	// el analizador encontró más argumentos de los permitidos
-        (void)snprintf(reply, size, "error: too many arguments");	// el (void) descarta el resultado a propósito
-        return;	// no se ejecuta ningún comando
+    if (cmd->too_many_args) {	// más de 4 argumentos
+        (void)snprintf(reply, size, "error: too many arguments");	// (void) porque no se usa lo que devuelve
+        return;
     }
-    switch (cmd->id) {	// elige qué hacer según el identificador del comando
+    switch (cmd->id) {
     case CMD_HELP:	// help
-        (void)snprintf(reply, size, "commands: help, info, blink <ms>, echo <text>, pwm <0..100>");	// texto fijo con la lista
-        break;	// sale del switch, sin esto seguiría con el siguiente case
+        (void)snprintf(reply, size, "commands: help, info, blink <ms>, echo <text>, pwm <0..100>");
+        break;	// sin el break seguiría con el siguiente case
     case CMD_INFO:	// info
-        (void)snprintf(reply, size, "uptime %lu ms, blink %lu ms",	// tiempo encendida y periodo del LED
-                       (unsigned long)HAL_GetTick(), (unsigned long)heartbeat_get_period());	// unsigned long para que coincida con %lu
+        (void)snprintf(reply, size, "uptime %lu ms, blink %lu ms",
+                       (unsigned long)HAL_GetTick(), (unsigned long)heartbeat_get_period());	// cast para que coincida con %lu
         break;
     case CMD_BLINK:	// blink <ms>
-        cmd_blink(cmd, reply, size); // es más largo, tiene su propia función
+        cmd_blink(cmd, reply, size);
         break;
     case CMD_ECHO:	// echo <texto>
-        cmd_echo(cmd, reply, size);	// es más largo, tiene su propia función
+        cmd_echo(cmd, reply, size);
         break;
     case CMD_PWM:	// pwm <porcentaje>
-        cmd_pwm(cmd, reply, size);	// es más largo, tiene su propia función
+        cmd_pwm(cmd, reply, size);
         break;
-    case CMD_UNKNOWN: // el nombre no estaba en la tabla
-    default:	// y cualquier otro valor inesperado
-        (void)snprintf(reply, size, "error: unknown command '%s' (type help)", cmd->name);	// repite lo que se escribió
+    case CMD_UNKNOWN: // no estaba en la tabla
+    default:
+        (void)snprintf(reply, size, "error: unknown command '%s' (type help)", cmd->name);
         break;
     }
 }

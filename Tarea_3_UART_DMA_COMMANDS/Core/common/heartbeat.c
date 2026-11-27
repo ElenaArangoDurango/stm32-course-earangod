@@ -1,5 +1,5 @@
 /* Core/common/heartbeat.c
- * Author: earangod@unal.edu.co
+ * Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
  */
 #include "stm32f4xx_hal.h" 
 #include "heartbeat.h"

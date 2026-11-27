@@ -1,5 +1,5 @@
 /* Core/common/app.h 
- * Author: earangod@unal.edu.co
+ * Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
  Es la interfaz común de las aplicaciones, capa app.c define las funciones 
  */
  // Estas líneas evitan que el contenido .h se copie dos veces en el mismo archivo

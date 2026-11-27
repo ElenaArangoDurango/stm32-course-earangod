@@ -1,5 +1,5 @@
-/* Core/app_0_blinky/app.c — Stage 0: no UART yet
- * Author: earangod@unal.edu.co
+/* Core/app_0_blinky/app.c, etapa 0: todavía no hay UART
+ * Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
  
  */
 #include "app.h"

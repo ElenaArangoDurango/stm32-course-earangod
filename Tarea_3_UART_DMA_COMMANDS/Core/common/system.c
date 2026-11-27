@@ -1,6 +1,6 @@
 /* Core/common/system.c
  * Es el sistema del reloj y el manejo de errores que se comparte en las etapas
- * Author: earangod@unal.edu.co
+ * Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
  */
 #include "stm32f4xx_hal.h" // Tipos y funciones del HAL
 #include "system.h" // Son los prototipos propios para que el compilador revise si coinciden

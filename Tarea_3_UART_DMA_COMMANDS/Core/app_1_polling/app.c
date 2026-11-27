@@ -1,6 +1,6 @@
 /* app.c, etapa 1: UART por polling
 USART2 bloqueante, la CPU espera dentro de cada llamada HAL.
-Autor: earangod@unal.edu.co
+Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
 
 Picocom es el programa del computador que hace de pantalla y permite enviar y recibir caracteres
 se configura a una velocidad de 115200 baudios y a 8N1 ( Que indica que son ocho bits de datos, No hay paridad
@@ -53,18 +53,18 @@ void app_loop(void)
     uint8_t  byte_aux;  // Aquí llega la tecla recibida
     char     msg[40];   // Texto armado antes de enviarlo
     char     shown;     // Carácter que se muestra en pantalla
-    uint32_t now_ms = HAL_GetTick();  // Hora actual en milisegundos
 
-    // Resta la hora del último tick a la hora actual. Si la diferencia llegó
-    // a 1000 ms, toca imprimir otro. Así no se necesita un temporizador,
-    // se compara la hora en cada vuelta.
-    if ((now_ms - last_tick_ms) >= TICK_PERIOD_MS) {
-        last_tick_ms = now_ms; // Anota la hora de este tick para que el siguiente cuente desde aquí
+    /* HAL_GetTick() da la hora actual en ms, contada desde que arrancó la placa.
+    Se le resta la hora del último tick y, si la diferencia llegó a 1000 ms,
+    toca imprimir otro. Así no se necesita un temporizador, se compara la hora
+    en cada vuelta. */
+    if ((HAL_GetTick() - last_tick_ms) >= TICK_PERIOD_MS) {
+        last_tick_ms = HAL_GetTick(); // Anota la hora de este tick, el siguiente cuenta desde aquí
         tick_count++;          // Suma uno al contador
         // snprintf arma el texto dentro de msg sin pasarse de su tamaño.
         // %lu pide unsigned long, por eso el cast de los uint32_t.
         (void)snprintf(msg, sizeof(msg), "tick %lu at %lu ms\r\n",
-                       (unsigned long)tick_count, (unsigned long)now_ms);
+                       (unsigned long)tick_count, (unsigned long)last_tick_ms); // last_tick_ms es la hora de este tick
         uart2_send_text(msg); // Envía el texto por la UART
     }
 
@@ -80,7 +80,7 @@ void app_loop(void)
         shown = ((byte_aux >= 0x20U) && (byte_aux <= 0x7EU)) ? (char)byte_aux : '.';
         // %c muestra el carácter y %02X el valor en hexadecimal con 2 dígitos
         (void)snprintf(msg, sizeof(msg), "rx: '%c' 0x%02X\r\n",
-                       shown, (unsigned int)byte_aux);
+                       shown, byte_aux);
         uart2_send_text(msg); // Envía la descripción de la tecla por la UART
     }
 }

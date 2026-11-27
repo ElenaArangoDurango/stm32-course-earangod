@@ -1,4 +1,4 @@
-/* Autor: earangod@unal.edu.co */
+/* Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co */
 #ifndef CMD_PARSER_H
 #define CMD_PARSER_H
 

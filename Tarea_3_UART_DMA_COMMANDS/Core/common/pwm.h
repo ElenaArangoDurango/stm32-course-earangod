@@ -1,6 +1,6 @@
-/* Autor: earangod@unal.edu.co
-Una salida PWM, TIM4 canal 2 en PB7 a 1 kHz.
-commands.c decide qué significa pwm 25 y este módulo es el único que toca el temporizador. */
+/* Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
+PWM en PB7 con TIM4 canal 2, a 1 kHz. Este es el único archivo que toca el timer,
+commands.c solo llama a estas funciones. */
 #ifndef PWM_H
 #define PWM_H
 

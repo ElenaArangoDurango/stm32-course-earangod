@@ -1,5 +1,5 @@
 /* Core/common/system.h
- * Author: earangod@unal.edu.co
+ * Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
  Configuración del reloj y los errores  que se comparten en todas las etapas 
  */
 #ifndef SYSTEM_H

@@ -1,4 +1,4 @@
-/* Autor: earangod@unal.edu.co 
+/* Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co 
 Recibe una línea como blink   500, la parte en palabras, busca la primera en una tabla 
 y deja el resto como argumentos. No usa memoria extra, trabaja sobre la misma línea.*/
 #include <string.h> // trae strcmp, que compara dos textos
@@ -37,8 +37,8 @@ bool cmd_parse(char *line, cmd_t *cmd)
     while (*cursor != '\0') { // el ciclo corre mientras el cursor no apunte al \0
         if (is_separator(*cursor)) {
             *cursor = '\0';
-            // Esta es la clave del archivo, partir la línea es escribir ceros en ella. 
-            // Por eso line no lleva const.
+            // Aquí se parte la línea, cada separador se cambia por un '\0'.
+            // Por eso line no puede ser const, se escribe encima.
             cursor++;
         } else if (word_count == (CMD_MAX_ARGS + 1U)) { // ya hay demasiadas palabras
             cmd->too_many_args = true;

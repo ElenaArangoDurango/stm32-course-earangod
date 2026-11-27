@@ -1,7 +1,7 @@
 /* app.c, etapa 2: recepción por interrupción
 USART2 recibe con interrupción, cada byte que llega se guarda en un buffer circular y el app_loop lo saca cuando puede
 esta étapa arma lineas 
-Autor: earangod@unal.edu.co
+Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
 
 */
 #include <stdbool.h> // Booleano, true y false 

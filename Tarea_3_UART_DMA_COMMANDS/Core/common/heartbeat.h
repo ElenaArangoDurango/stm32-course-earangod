@@ -1,6 +1,6 @@
 /* Core/common/heartbeat.h
 LD2 parpadea indicando que todo funciona adecuadamente.
- * Author: earangod@unal.edu.co
+ * Los códigos fueron proporcionados por el profesor Nerio Montoya como material de clase, pero los comentarios fueron hechos por earangod@unal.edu.co
  */
 #ifndef HEARTBEAT_H
 #define HEARTBEAT_H
