@@ -126,7 +126,7 @@
 lo que se escribe en sus registros. Si pusiera HAL_UART_Init() antes, el HAL escribiría la configuración y no pasaría nada,
  y la UART no funcionaría sin mostrar ningún error.
 
-2. HAL_UART_Init() llama a HAL_UART_MspInit(), que es una función del HAL pensada para activar relojes y pines, 
+2. HAL_UART_Init llama a HAL_UART_MspInit, que es una función del HAL pensada para activar relojes y pines, 
 pero por defecto está vacía. Como ya se activaron los relojes y se configuraron los pines en uart2_init() 
 antes de llamar a HAL_UART_Init(), no hace falta llenar HAL_UART_MspInit() y la UART funciona igual.
 

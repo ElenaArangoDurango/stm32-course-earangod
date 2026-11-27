@@ -7,8 +7,8 @@
 
 #define HB_TIM       TIM2 
 #define HB_TICK_HZ   10000U        // Es la velocidad de conteo del timer, 10 kHz = 0.1 ms por tick
-#define HB_LED_PORT  GPIOA // Puerto del LED 
-#define HB_LED_PIN   GPIO_PIN_5    // LD2
+#define HB_LED_PORT  GPIOC // Puerto del LED externo (antes GPIOA para LD2)
+#define HB_LED_PIN   GPIO_PIN_0    // PC0, LED externo con resistencia (antes PA5 = LD2)
 
 static TIM_HandleTypeDef htim_hb;  // Configura el TIM2 como static, solo este archivo lo toca
 static volatile uint32_t hb_period_ms; //Es el periodo en ms, se lee de memoria
@@ -32,16 +32,16 @@ void heartbeat_init(uint32_t toggle_ms)
     // Son los parámetros del pin
 
     // Los relojes se configuran primero 
-    __HAL_RCC_GPIOA_CLK_ENABLE(); // el equivalente en bare metal sería el RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN; //
+    __HAL_RCC_GPIOC_CLK_ENABLE(); // reloj del puerto C, en bare metal sería RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN; sin esto PC0 no responde
     __HAL_RCC_TIM2_CLK_ENABLE(); // El equivalente para este sería la activación del TIM2
 
 
     // LED
-    gpio.Pin   = HB_LED_PIN; // Es el pin 5
+    gpio.Pin   = HB_LED_PIN; // Es el pin 0 del puerto C
     gpio.Mode  = GPIO_MODE_OUTPUT_PP; // Salida push pull, MODER 01, OTYPER 0
     gpio.Pull  = GPIO_NOPULL; // Sin resistencia interna
     gpio.Speed = GPIO_SPEED_FREQ_LOW; // Baja velocidad 
-    HAL_GPIO_Init(HB_LED_PORT, &gpio); // Corresponde a la activación del GPIOA, con el MODER, OTYPER, PUPDR y OSPEEDR, según el pin que se esté usando.
+    HAL_GPIO_Init(HB_LED_PORT, &gpio); // Corresponde a la activación del GPIOC, con el MODER, OTYPER, PUPDR y OSPEEDR, según el pin que se esté usando.
 
     // Es la base del tiempo para TIM2 
     hb_period_ms = toggle_ms; // Guarda el periodo en ms
@@ -87,6 +87,6 @@ void TIM2_IRQHandler(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if (htim->Instance == HB_TIM) { // se comparte entre todos los timers, pero nos interesa solo el TIM2 por ahora
-        HAL_GPIO_TogglePin(HB_LED_PORT, HB_LED_PIN); // Invierte PA5
+        HAL_GPIO_TogglePin(HB_LED_PORT, HB_LED_PIN); // Invierte PC0
     }
 }

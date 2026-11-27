@@ -125,7 +125,7 @@ static void uart2_init(void)
  */
 static void uart2_send_text(const char *text)
 {
-    (void)HAL_UART_Transmit(&huart2,                 // UART por la que se envía 
+    (void)HAL_UART_Transmit(&huart2,  // UART por la que se envía 
                             (const uint8_t *)text,   // el texto visto como bytes 
                            (uint16_t)strlen(text),  // cantidad de caracteres a enviar 
                             TX_TIMEOUT_MS);   // tiempo máximo de espera: 100 ms 
