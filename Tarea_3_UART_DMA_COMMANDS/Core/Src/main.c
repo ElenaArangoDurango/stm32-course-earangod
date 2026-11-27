@@ -26,7 +26,7 @@
  Break it 1 (RX_TIMEOUT_MS = HAL_MAX_DELAY): los tick dejaron de salir pero LD2 siguió parpadeando.
  Cuando escribí 'a' salió rx: 'a' 0x61 y después tick 1 at 100136 ms. Lo volví a dejar en 10U.
  Break it 2 (pegar 0123456789): solo volvieron rx: '0' 0x30 y rx: '1' 0x31, los otros 8 se perdieron
- por overrun y después siguió el tick 36 at 36080 ms. Esto se arregla con interrupciones en la etapa 2.
+ por overrun y después siguió el tick 36 at 36080 ms. 
 
  2.A Con APP = interrupt compiló y la placa hizo lo mismo que en la etapa 1 (banner, tick y rx).
 
@@ -148,14 +148,6 @@ los static no chocan porque cada uno es privado de su archivo, pero app_init y a
 públicos y quedarían definidos dos veces (multiple definition). El APP_H no ayuda aquí porque solo evita
 incluir el mismo .h dos veces dentro de un mismo archivo.
 
-
-ETAPA 2: me faltan las 8 preguntas de repaso, el Break it ya lo hice.
-
-ETAPA 3: me faltan las 8 preguntas de repaso, los checkpoints y el Break it ya los hice.
-
-ETAPA 4: me faltan las preguntas de repaso, los checkpoints y el Break it ya los hice.
-
-ETAPA 5: me faltan las 7 preguntas de repaso, los checkpoints, el Break it y el ejercicio opcional ya los hice.
  */
  #include "stm32f4xx_hal.h"
 #include "system.h"
